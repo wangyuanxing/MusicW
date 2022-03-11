@@ -1,0 +1,388 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* 设计背景样式，最大的盒子 */
+
+.wrap {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../images/bg.jpg") no-repeat;
+    background-size: 100%;
+}
+
+
+/*设计播放器界面背景  */
+
+.play_wrap {
+    width: 800px;
+    height: 545px;
+    position: fixed;
+    /* 整个播放器居中 */
+    left: 50%;
+    top: 50%;
+    margin-left: -400px;
+    margin-top: -272px;
+    /* background-color: pink; */
+}
+
+
+/* 最上层div 搜索栏,包含input搜索框和log
+flex 居中两端显示，并在最上层 */
+
+.search_bar {
+    height: 60px;
+    background: #da4a1e;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 12;
+}
+
+
+/* 在搜索栏左边放一个log */
+
+.search_bar img {
+    width: 330px;
+    height: 50px;
+    margin-left: 1px;
+}
+
+
+/* 设置输入栏的样式 , 并加搜索log图片*/
+
+.search_bar input {
+    margin-right: 20px;
+    width: 296px;
+    height: 34px;
+    border-radius: 17px;
+    border: 0px;
+    background: url("../images/zoom.png") 260px center no-repeat rgba(255, 255, 255, 0.45);
+    text-indent: 15px;
+    outline: none;
+}
+
+
+/* 中间模块，整个大模块下分为三栏，左边歌曲列表，中间模拟唱片播放动画，右边歌曲评论 */
+
+
+/* 首先设计中间整体样式 */
+
+.center_con {
+    height: 435px;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    position: relative;
+}
+
+
+/* 最左边歌曲列表样式 */
+
+.song_wrap {
+    width: 200px;
+    height: 435px;
+    box-sizing: border-box;
+    padding: 10px;
+    list-style: none;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+}
+
+
+/* 歌曲list设计 */
+
+.song_list {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+}
+
+
+/* 自定义list的滚动条 */
+
+.song_list::-webkit-scrollbar {
+    display: none
+}
+
+.song_list li {
+    font-size: 12px;
+    color: #333;
+    height: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 580px;
+    padding-left: 10px;
+}
+
+
+/* li中奇数项换颜色 */
+
+.song_list li:nth-child(odd) {
+    background-color: rgba(240, 240, 240, 0.3);
+}
+
+
+/* 歌曲列表播放按钮设计，a链接，换成播放按钮图片 */
+
+.song_list li a {
+    display: block;
+    width: 17px;
+    height: 17px;
+    background-image: url("../images/play.png");
+    background-size: 100%;
+    margin-left: 5px;
+    box-sizing: border-box;
+}
+
+
+/* 歌曲名的b设计 */
+
+.song_list li b {
+    font-weight: normal;
+    width: 122px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* 视频MV按钮 */
+
+.song_list li span {
+    width: 23px;
+    height: 17px;
+}
+
+
+/* 精灵图 */
+
+.song_list li span i {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background: url('../images/table.png') left -50px no-repeat;
+}
+
+
+/* 歌曲信息及dj部分 */
+
+.player_con {
+    width: 400px;
+    height: 435px;
+    position: absolute;
+    left: 200px;
+    top: 0px;
+}
+
+
+/* 黑胶碟片放入 */
+
+.disc {
+    position: absolute;
+    left: 73px;
+    top: 60px;
+    z-index: 9;
+}
+
+
+/* 黑胶碟片的中间信息图片 */
+
+.cover {
+    position: absolute;
+    left: 125px;
+    top: 112px;
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    z-index: 8;
+}
+
+
+/* 评论区 */
+
+.comment_wrap {
+    width: 180px;
+    height: 425px;
+    list-style: none;
+    position: absolute;
+    left: 600px;
+    top: 0px;
+    padding: 25px 10px;
+}
+
+
+/* 评论区标题样式 */
+
+.comment_wrap .title {
+    position: absolute;
+    top: 0;
+    margin-top: 10px;
+    z-index: 8;
+}
+
+
+/* 评论区内容样式 */
+
+.comment_wrap .comment_list {
+    overflow: auto;
+    height: 420px;
+}
+
+
+/* 不显示滚动条 */
+
+.comment_wrap .comment_list::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* 自定义列表 设计每个人评论 */
+
+.comment_wrap dl {
+    padding-top: 10px;
+    padding-left: 55px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+
+/* dt显示id和头像 */
+
+.comment_wrap dt {
+    position: absolute;
+    left: 4px;
+    top: 10px;
+}
+
+
+/* 头像显示 */
+
+.comment_wrap dt img {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+
+/* 评论内容样式 */
+
+.comment_wrap dd {
+    font-size: 12px;
+}
+
+
+/* 昵称样式 */
+
+.comment_wrap .name {
+    font-weight: bold;
+    color: #333;
+    padding-top: 5px;
+}
+
+
+/* 评论详情 */
+
+.comment_wrap .detail {
+    color: #666;
+    margin-top: 5px;
+    line-height: 18px;
+}
+
+
+/* 动画效果放到最后设计 
+    接下去设计播放部分 */
+
+.audio_con {
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    background-color: #f1f3f4;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    z-index: 20;
+}
+
+.myaudio {
+    width: 800px;
+    height: 40px;
+    margin-top: 5px;
+    outline: none;
+    background-color: #f1f3f4;
+}
+
+
+/* 360°旋转 */
+
+@keyframes Rotate {
+    from {
+        transform: rotateZ(0);
+    }
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+
+/* 旋转类 */
+
+.autoRotate {
+    animation-name: Rotate;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+    animation-timing-function: linear;
+    animation-duration: 5s;
+}
+
+
+/* 播放情况 */
+
+.player_con.playing .disc,
+.player_con.playing .cover {
+    animation-play-state: running;
+}
+
+
+/* 播放杆子 */
+
+.play_bar {
+    position: absolute;
+    left: 200px;
+    top: -10px;
+    z-index: 10;
+    transform: rotate(-25deg);
+    transform-origin: 12px 12px;
+    transition: 1s;
+}
+
+
+/* 播放杆 转回去 */
+
+.player_con.playing .play_bar {
+    transform: rotate(0);
+}
+
+
+/* 边线框样式 */
+
+.left_line {
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+}
+
+.right_line {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
